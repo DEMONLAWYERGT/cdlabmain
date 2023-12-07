@@ -1,0 +1,3 @@
+int lexi = 10;
+int sum = lexi + 10 ;
+printf("sum=%d",sum);
