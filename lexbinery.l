@@ -2,16 +2,14 @@
 #include <stdio.h>
 %}
 
-DIGIT  [0-1]
-BINARY {DIGIT}+
+digit       [0-1]
+binary      {digit}+
 %%
-{BINARY} { printf("%s01\n", yytext); }
-.|\n    { printf("Not a binary number.\n"); }
+{binary}    printf("Input is a binary number\n");
+.*01        printf("Binary number ending with '01' found: %s\n", yytext);
+\n          /* Ignore newline character */
+.           printf("Invalid input\n");
 %%
-
-int yywrap() {
-    return 1;
-}
 
 int main() {
     yylex();
